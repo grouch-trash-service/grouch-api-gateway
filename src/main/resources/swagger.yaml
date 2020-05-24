@@ -1,0 +1,17 @@
+swagger: "2.0"
+info:
+  title: Grouch Trash Service
+  description: Provides the Grouchiest trash information there is
+  version: 1.0.0
+host: api.example.com
+schemes:
+  - https
+paths:
+  /message:
+    get:
+      summary: Returns a message declairing when trash pickup will be.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
