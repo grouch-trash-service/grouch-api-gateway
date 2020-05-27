@@ -1,17 +1,38 @@
+---
 swagger: "2.0"
 info:
-  title: Grouch Trash Service
-  description: Provides the Grouchiest trash information there is
-  version: 1.0.0
-host: api.example.com
+  description: "This is an api for getting a message that will tell the receiver information on when the next trash pickup is."
+  version: "1.0.0"
+  title: "Grouch Trash Message Service"
+  contact:
+    email: "matthew.js.porter@gmail.com"
+host: "localhost:8080"
+basePath: "/v1"
 schemes:
-  - https
+  - "http"
 paths:
   /message:
     get:
-      summary: Returns a message declairing when trash pickup will be.
+      tags:
+        - "message"
+      summary: "Get a message from grouch trash service about when trash pickup is"
+      description: ""
+      operationId: "getMessage"
       produces:
-        - application/json
+        - "application/xml"
+        - "application/json"
       responses:
         200:
-          description: OK
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Message"
+definitions:
+  Message:
+    type: "object"
+    required:
+      - "text"
+    properties:
+      text:
+        type: "string"
+    xml:
+      name: "Message"
