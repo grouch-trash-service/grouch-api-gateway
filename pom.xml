@@ -19,6 +19,7 @@
                 <version>2.3.1</version>
                 <executions>
                     <execution>
+                        <id>generate-java</id>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -37,6 +38,25 @@
                                 <dateLibrary>joda</dateLibrary>
                             </configOptions>
                             <library>spring-cloud</library>
+                            <output>${project.build.directory}/generated-sources/java</output>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>generate-javascript</id>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <!-- specify the swagger yaml -->
+                            <inputSpec>src/main/resources/swagger.yaml</inputSpec>
+
+                            <!-- target to generate java client code -->
+                            <language>javascript</language>
+
+                            <!-- hint: if you want to generate java server code, e.g. based on Spring Boot,
+                                 you can use the following target: <language>spring</language> -->
+                            <!-- pass any necessary config options -->
+                            <output>${project.build.directory}/generated-sources/javascript</output>
                         </configuration>
                     </execution>
                 </executions>
