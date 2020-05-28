@@ -6,7 +6,7 @@ info:
   title: "Grouch Trash Message Service"
   contact:
     email: "matthew.js.porter@gmail.com"
-host: "localhost:8080"
+host: "localhost:3000"
 basePath: "/v1"
 schemes:
   - "http"
