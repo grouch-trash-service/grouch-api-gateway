@@ -16,7 +16,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Handler: index.handler
-      Runtime: python3.6
+      Runtime: python3.7
       CodeUri: ./lambda
       Events:
         GetResource:
