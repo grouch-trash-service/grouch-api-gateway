@@ -7,11 +7,10 @@ info:
   contact:
     email: "matthew.js.porter@gmail.com"
 host: "localhost:3000"
-basePath: "/v1"
 schemes:
   - "http"
 paths:
-  /message:
+  /v1/message:
     get:
       tags:
         - "message"
