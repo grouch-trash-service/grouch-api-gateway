@@ -19,13 +19,20 @@ paths:
       description: ""
       operationId: "getMessage"
       produces:
-        - "application/xml"
         - "application/json"
       responses:
         200:
           description: "successful operation"
           schema:
             $ref: "#/definitions/Message"
+      x-amazon-apigateway-integration:
+        responses:
+          default:
+            statusCode: 200
+        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:545853618712:function:grouch-api-gateway-GetMessageFunction-QU8OQWPQEQ29/invocations"
+        passthroughBehavior: when_no_match
+        httpMethod: POST
+        type: aws_proxy
 definitions:
   Message:
     type: "object"
@@ -34,5 +41,3 @@ definitions:
     properties:
       text:
         type: "string"
-    xml:
-      name: "Message"
