@@ -19,7 +19,7 @@ Resources:
         Fn::Transform:
           Name: AWS::Include
           Parameters:
-            Location: src/main/resources/swagger.yaml
+            Location: src/main/resources/api.yaml
   GetMessageFunction:
     Type: AWS::Serverless::Function
     Properties:
