@@ -2,7 +2,7 @@ version = 0.1
 [default]
 [default.deploy]
 [default.deploy.parameters]
-stack_name = "grouch-api-gateway2"
+stack_name = "grouch-api-gateway"
 s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1oq8ho1pgifjt"
 s3_prefix = "grouch-api-gateway"
 region = "us-east-1"

@@ -11,7 +11,11 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: Prod
-      DefinitionUri: src/main/resources/swagger.yaml
+      DefinitionBody:
+        Fn::Transform:
+          Name: AWS::Include
+          Parameters:
+            Location: src/main/resources/swagger.yaml
   GetMessageFunction:
     Type: AWS::Serverless::Function
     Properties:

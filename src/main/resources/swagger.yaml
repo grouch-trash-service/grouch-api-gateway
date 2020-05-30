@@ -30,7 +30,8 @@ paths:
         responses:
           default:
             statusCode: 200
-        uri: "arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:545853618712:function:grouch-api-gateway2-GetMessageFunction-LFLDHTQX6RXL/invocations"
+        uri:
+          Fn::Sub: "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${GetMessageFunction.Arn}/invocations"
         passthroughBehavior: when_no_match
         httpMethod: POST
         type: aws_proxy
@@ -52,5 +53,7 @@ securityDefinitions:
     x-amazon-apigateway-authtype: token
     x-amazon-apigateway-authorizer:
       type: token
-      authorizerUri: arn:aws:apigateway:us-east-1:lambda:path/2015-03-31/functions/arn:aws:lambda:us-east-1:545853618712:function:grouch-api-gateway2-AuthFunction-E9DGMA3SD4FB/invocations
-      authorizerCredentials: arn:aws:iam::545853618712:role/lambda_invoke_function_assume_apigw_role
+      authorizerUri:
+        Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${AuthFunction.Arn}/invocations
+      authorizerCredentials:
+        Fn::Sub: ${AuthRole.Arn}
