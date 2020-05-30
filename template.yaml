@@ -73,4 +73,47 @@ Resources:
                 Action: lambda:InvokeFunction
                 Resource: "*"
 
+  SwaggerUiS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName: grouch-message-service-swagger-ui
+      MetricsConfigurations:
+        - Id: EntireBucket
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: error.html
+    DeletionPolicy: Retain
+
+
+
+  SwaggerS3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName: grouch-message-service-swagger
+      MetricsConfigurations:
+        - Id: EntireBucket
+      WebsiteConfiguration:
+        IndexDocument: api.yaml
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders:
+              - "*"
+            AllowedMethods:
+              - GET
+            AllowedOrigins:
+              - "*"
+    DeletionPolicy: Retain
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt [SwaggerUiS3Bucket, WebsiteURL]
+    Description: URL for website hosted on S3
+  SchemaURL:
+    Value: !GetAtt [SwaggerS3Bucket, WebsiteURL]
+    Description: URL swagger schema
+  S3BucketSecureURL:
+    Value: !Join ['', ['https://', !GetAtt [SwaggerUiS3Bucket, DomainName]]]
+    Description: Name of S3 bucket to hold website content
+
 
