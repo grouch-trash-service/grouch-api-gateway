@@ -11,6 +11,10 @@ Resources:
     Type: AWS::Serverless::Api
     Properties:
       StageName: Prod
+      Cors:
+        AllowMethods: "'GET'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
       DefinitionBody:
         Fn::Transform:
           Name: AWS::Include
