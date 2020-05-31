@@ -6,12 +6,9 @@ info:
   title: "Grouch Trash Message Service"
   contact:
     email: "matthew.js.porter@gmail.com"
-#host: "localhost:3000"
 servers:
   - url: https://q6n0afvfcf.execute-api.us-east-1.amazonaws.com/Prod
   - url: http://localhost:3000
-#schemes:
-#  - "http"
 paths:
   /v1/message:
     get:
@@ -28,6 +25,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Message"
+        401:
+          description: "Unauthorized"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        403:
+          description: "Forbidden"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        500:
+          description: "Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
       security:
         - authorizer: []
       x-amazon-apigateway-integration:
@@ -61,4 +77,11 @@ components:
         - "text"
       properties:
         text:
+          type: "string"
+    Error:
+      type: "object"
+      required:
+        - "message"
+      properties:
+        message:
           type: "string"
