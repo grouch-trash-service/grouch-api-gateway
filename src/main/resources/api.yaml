@@ -9,7 +9,7 @@ info:
 #host: "localhost:3000"
 servers:
   - url: https://q6n0afvfcf.execute-api.us-east-1.amazonaws.com/Prod
-  - url: //localhost:3000
+  - url: http://localhost:3000
 #schemes:
 #  - "http"
 paths:
