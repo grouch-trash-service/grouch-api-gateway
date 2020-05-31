@@ -8,8 +8,8 @@ info:
     email: "matthew.js.porter@gmail.com"
 #host: "localhost:3000"
 servers:
-  - url: http://localhost:3000
-  - url: http://localhost:8080
+  - url: https://q6n0afvfcf.execute-api.us-east-1.amazonaws.com/Prod
+  - url: //localhost:3000
 #schemes:
 #  - "http"
 paths:
