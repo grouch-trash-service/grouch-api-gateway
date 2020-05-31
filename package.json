@@ -1,0 +1,14 @@
+{
+  "name": "oscar-api-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "8"
+  },
+  "scripts": {
+    "postinstall": "cp src/main/resources/index.html node_modules/swagger-ui-dist/"
+  },
+  "dependencies": {
+    "swagger-ui-dist": "^3.25.5"
+  }
+}
