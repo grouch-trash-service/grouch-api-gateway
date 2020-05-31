@@ -82,10 +82,26 @@ Resources:
         - Id: EntireBucket
       WebsiteConfiguration:
         IndexDocument: index.html
-        ErrorDocument: error.html
     DeletionPolicy: Retain
 
-
+  SwaggerUiS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: SwaggerUiS3Bucket
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: "Allow"
+            Resource:
+              Fn::Join:
+                - ""
+                -
+                  - "arn:aws:s3:::"
+                  - Ref: SwaggerUiS3Bucket
+                  - "/*"
+            Principal: "*"
 
   SwaggerS3Bucket:
     Type: AWS::S3::Bucket
@@ -105,6 +121,25 @@ Resources:
             AllowedOrigins:
               - "*"
     DeletionPolicy: Retain
+
+  SwaggerS3BucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: SwaggerS3Bucket
+      PolicyDocument:
+        Statement:
+          - Action:
+              - s3:GetObject
+            Effect: "Allow"
+            Resource:
+              Fn::Join:
+                - ""
+                -
+                  - "arn:aws:s3:::"
+                  - Ref: SwaggerS3Bucket
+                  - "/*"
+            Principal: "*"
 Outputs:
   WebsiteURL:
     Value: !GetAtt [SwaggerUiS3Bucket, WebsiteURL]
