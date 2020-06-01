@@ -26,6 +26,8 @@ jobs:
 
     - name: Build with Maven
       run: ./mvnw -B package --file pom.xml
+      env:
+        NODE_AUTH_TOKEN: ${{ github.token }}
 
     - name: Publish to GitHub Packages Apache Maven
       run: ./mvnw deploy -s $GITHUB_WORKSPACE/settings.xml
