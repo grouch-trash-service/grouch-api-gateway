@@ -4,6 +4,6 @@ def handler(event, context):
         "statusCode": 200,
         "headers": {'Access-Control-Allow-Origin': '*'},
         "body": json.dumps({
-            "message": "Hello. Trash pickup will be on Tuesday... Now SCRAM!",
+            "text": "Hello. Trash pickup will be on Tuesday... Now SCRAM!",
         }),
     }
