@@ -6,7 +6,8 @@
     "node": "8"
   },
   "scripts": {
-    "postinstall": "cp src/main/resources/index.html node_modules/swagger-ui-dist/"
+    "publish": "cd target/generated-sources/javascript && npm publish",
+    "postinstall": "cp src/main/resources/index.html node_modules/swagger-ui-dist/ && cp .npmrc target/generated-sources/javascript"
   },
   "dependencies": {
     "swagger-ui-dist": "^3.25.5"
