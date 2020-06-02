@@ -35,6 +35,6 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
 
     - name: Publish to GitHub Packages npm
-      run: npm run publish target/generated-sources/javascript
+      run: npm publish target/generated-sources/javascript
       env:
         NODE_AUTH_TOKEN: ${{ github.token }}
