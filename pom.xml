@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.mporter</groupId>
     <artifactId>grouch-api-gateway</artifactId>
-    <version>${revision}</version>
+    <version>1.0.${revision}</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -16,7 +16,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <swagger-core-version>1.5.18</swagger-core-version>
         <cucumber.version>4.3.1</cucumber.version>
-        <revision>1.0.0-SNAPSHOT</revision>
+        <revision>0-SNAPSHOT</revision>
     </properties>
 
     <distributionManagement>
