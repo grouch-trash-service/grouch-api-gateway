@@ -21,5 +21,5 @@ aws s3 cp src/main/resources/api.yaml s3://grouch-message-service-swagger
 
 ### Deploy swagger-ui to S3
 ```bash
-aws sync node_modules/swagger-ui-dist s3://grouch-message-service-swagger-ui
+aws s3 sync node_modules/swagger-ui-dist s3://grouch-message-service-swagger-ui
 ```
