@@ -49,8 +49,8 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-     - name: Deploy Sam templates
-       run: sam deploy
+    - name: Deploy Sam templates
+      run: sam deploy
 
 
 
