@@ -24,7 +24,7 @@ jobs:
       with:
         node-version: 8.x
         registry-url: 'https://npm.pkg.github.com'
-        scope: @grouch-trash-service
+        scope: '@grouch-trash-service'
 
     - name: Build with Maven
       run: ./mvnw -B package --file pom.xml
