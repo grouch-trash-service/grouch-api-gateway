@@ -32,7 +32,7 @@ jobs:
     - name: Publish to GitHub Packages Apache Maven
       run: ./mvnw deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
-        GITHUB_TOKEN: ${{ secrets.token }}
+        GITHUB_TOKEN: ${{ github.token }}
 
     - name: Publish to GitHub Packages npm
       run: npm publish target/generated-sources/javascript
