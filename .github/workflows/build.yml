@@ -52,5 +52,10 @@ jobs:
     - name: Deploy Sam templates
       run: sam deploy
 
+    - name: Deploy Swagger
+      run: |
+        aws s3 cp src/main/resources/api.yaml s3://grouch-message-service-swagger
+        aws sync node_modules/swagger-ui-dist s3://grouch-message-service-swagger-ui
+
 
 
