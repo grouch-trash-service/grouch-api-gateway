@@ -50,7 +50,7 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Deploy Sam templates
-      run: sam deploy
+      run: sam deploy --no-fail-on-empty-changeset
 
     - name: Deploy Swagger
       run: |
