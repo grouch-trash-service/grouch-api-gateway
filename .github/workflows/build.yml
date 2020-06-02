@@ -58,7 +58,7 @@ jobs:
         aws s3 sync node_modules/swagger-ui-dist s3://grouch-message-service-swagger-ui
 
     - name: Run Cucumber Tests
-      run: ./mvnw -P cucumber verify -Dspring.profiles.active=prod -DgrouchTrashMessageService.security.authorizer.key=${X_API_KEY}
+      run: ./mvnw -P cucumber verify -Dspring.profiles.active=prod -DgrouchTrashMessageService.security.authorizer.key=${API_KEY}
       env:
         API_KEY: ${{ secrets.API_KEY }}
 
