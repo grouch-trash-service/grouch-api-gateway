@@ -17,7 +17,7 @@ sam local start-api
 ## Tests
 ### Cucumber Tests
 This project uses cucumber to automate testing and describe behavior.
-To run the tests locally first [start the api.][#Running-locally]
+To run the tests locally first [start the api.](#Running-locally)
 Then run the following command.
 
 ```bash
