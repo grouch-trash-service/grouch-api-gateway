@@ -1,7 +1,9 @@
 # Grouch api gateway
 Grouch api gateway is the api gateway for Grouch Trash Service.
 The api for grouch trash service is defined using [open api](src/main/resources/api.yaml)
-
+and runs on `aws API Gateway.`
+For full documentation on the api please see the [swagger-ui page.](http://grouch-message-service-swagger-ui.s3-website-us-east-1.amazonaws.com/
+)
 ## Build
 The project is build using maven and uses npm and sam.
 The following command can be used to build.
@@ -13,6 +15,10 @@ The following command can be used to build.
 The api can be started locally with sam by running the following command.
 ```bash
 sam local start-api
+```
+to run swagger-ui locally run the following command
+```bash
+docker run -p 8080:8080 -e SWAGGER_JSON=/schema/api.yaml -v `pwd`/src/main/resources:/schema swaggerapi/swagger-ui
 ```
 ## Tests
 ### Cucumber Tests
@@ -48,16 +54,6 @@ to deploy the application first use the `aws configure` comand to setup credenti
 ```bash
 sam deploy
 ```
-## Swagger
-
-The swagger ui page for this api can be found here:
-http://grouch-message-service-swagger-ui.s3-website-us-east-1.amazonaws.com/
-
-to run swagger-ui locall run the following command
-```bash
-docker run -p 8080:8080 -e SWAGGER_JSON=/schema/api.yaml -v `pwd`/src/main/resources:/schema swaggerapi/swagger-ui
-```
-and navigate to http://localhost:8080
 
 To deploy swagger-ui to the aws s3 run the following.
 
