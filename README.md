@@ -70,10 +70,3 @@ aws s3 cp src/main/resources/api.yaml s3://grouch-message-service-swagger
 ```bash
 aws s3 sync node_modules/swagger-ui-dist s3://grouch-message-service-swagger-ui
 ```
-
-## Run locally
-```bash
-sam local start-api
-```
-
-[#Running-locally]: ##Running-locally
