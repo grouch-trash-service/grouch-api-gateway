@@ -122,6 +122,21 @@
                         </goals>
                     </execution>
                     <execution>
+                        <id>exec-npm-publish</id>
+                        <phase>deploy</phase>
+                        <configuration>
+                            <workingDirectory>${project.basedir}</workingDirectory>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>publish</argument>
+                                <argument>${project.build.directory}/generated-sources/javascript</argument>
+                            </arguments>
+                        </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
                         <id>exec-sam-build</id>
                         <phase>generate-sources</phase>
                         <configuration>
