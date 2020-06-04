@@ -88,12 +88,14 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <additionalProperties>projectName=@grouch-trash-service/grouch-api-gateway,projectVersion=${project.version}</additionalProperties>
+                            <gitUserId>grouch-trash-service</gitUserId>
+                            <gitRepoId>grouch-api-gateway</gitRepoId>
+                            <additionalProperties>npmRepository=npm.pkg.github.com/,npmName=@grouch-trash-service/grouch-api-gateway,npmVersion=${project.version}</additionalProperties>
                             <!-- specify the swagger yaml -->
                             <inputSpec>src/main/resources/api.yaml</inputSpec>
 
                             <!-- target to generate java client code -->
-                            <generatorName>javascript</generatorName>
+                            <generatorName>typescript-node</generatorName>
 
                             <!-- hint: if you want to generate java server code, e.g. based on Spring Boot,
                                  you can use the following target: <language>spring</language> -->
@@ -115,6 +117,35 @@
                             <executable>npm</executable>
                             <arguments>
                                 <argument>install</argument>
+                            </arguments>
+                        </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>exec-npm-install-javascript-client</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <workingDirectory>${project.build.directory}/generated-sources/javascript</workingDirectory>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>install</argument>
+                            </arguments>
+                        </configuration>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>exec-npm-build-javascript-client</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <workingDirectory>${project.build.directory}/generated-sources/javascript</workingDirectory>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>run</argument>
+                                <argument>build</argument>
                             </arguments>
                         </configuration>
                         <goals>
