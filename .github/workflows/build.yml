@@ -39,6 +39,13 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ github.token }}
 
+    - name: Run local Cucumber Tests
+      run: |
+        sam local start-api &
+        sam_pid=$!
+        ./mvnw -P cucumber verify
+        kill $sam_pid
+
     - name: Publish to GitHub Packages
       run: ./mvnw -Drevision=${GITHUB_RUN_NUMBER} deploy -s $GITHUB_WORKSPACE/settings.xml
       env:
