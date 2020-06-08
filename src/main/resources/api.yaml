@@ -67,7 +67,12 @@ components:
       x-amazon-apigateway-authorizer:
         type: token
         authorizerUri:
-          Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${AuthFunction.Arn}/invocations
+          Fn::Join:
+            - ""
+            -
+              - Fn::Sub: arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/
+              - Fn::ImportValue: grouch-auth-function-AuthFunction
+              - /invocations
         authorizerCredentials:
           Fn::Sub: ${AuthRole.Arn}
   schemas:

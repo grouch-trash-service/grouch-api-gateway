@@ -34,21 +34,12 @@ Resources:
             Method: get
             RestApiId: !Ref GrouchApiGateway
 
-  AuthFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: authorizer.handler
-      Runtime: python3.7
-      CodeUri: ./lambda
-
   ConfigLambdaPermission:
     Type: "AWS::Lambda::Permission"
-    DependsOn:
-      - AuthFunction
-      - GrouchApiGateway
     Properties:
       Action: lambda:InvokeFunction
-      FunctionName: !Ref AuthFunction
+      FunctionName:
+        Fn::ImportValue: grouch-auth-function-AuthFunction
       Principal: apigateway.amazonaws.com
 
   AuthRole:
