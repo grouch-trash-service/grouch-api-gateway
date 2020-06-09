@@ -7,7 +7,7 @@ info:
   contact:
     email: "matthew.js.porter@gmail.com"
 servers:
-  - url: https://q6n0afvfcf.execute-api.us-east-1.amazonaws.com/Prod
+  - url: https://d9lz2a1tq2.execute-api.us-east-1.amazonaws.com/Prod
   - url: http://localhost:3000
 paths:
   /v1/message:
