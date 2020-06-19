@@ -4,7 +4,6 @@ package net.mporter.cucumber;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openapitools.api.MessageApiClient;
-import org.openapitools.configuration.ApiKeyRequestInterceptor;
 import org.openapitools.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 
