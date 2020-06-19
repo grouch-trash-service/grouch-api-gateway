@@ -43,6 +43,7 @@ jobs:
       run: |
         sam build -t template-local.yaml && sam local start-api &
         sam_pid=$!
+        sleep 10
         ./mvnw -P cucumber verify
         kill $sam_pid
 
