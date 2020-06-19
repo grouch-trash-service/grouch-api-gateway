@@ -1,0 +1,35 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  grouch-trash-message-service
+
+  Sample SAM Template for grouch-trash-message-service
+
+Resources:
+  GrouchApiGateway:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+      Cors:
+        AllowMethods: "'GET'"
+        AllowHeaders: "'*'"
+        AllowOrigin: "'*'"
+      DefinitionBody:
+        Fn::Transform:
+          Name: AWS::Include
+          Parameters:
+            Location: src/main/resources/api.yaml
+  GetMessageFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: python3.7
+      CodeUri: ./lambda
+      Timeout: 30
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /v1/message
+            Method: get
+            RestApiId: !Ref GrouchApiGateway

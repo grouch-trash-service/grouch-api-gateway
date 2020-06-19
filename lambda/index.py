@@ -1,9 +1,8 @@
-import json
+import boto3
+
+
 def handler(event, context):
-    return {
-        "statusCode": 200,
-        "headers": {'Access-Control-Allow-Origin': '*'},
-        "body": json.dumps({
-            "text": "Hello. Trash pickup will be on Tuesday... Now SCRAM!",
-        }),
-    }
+    """Delegates lambda call to aws"""
+    lambda_client = boto3.client('lambda')
+    response = lambda_client.invoke(FunctionName='GrouchMessageFunction')
+    return response['Payload']._raw_stream.data

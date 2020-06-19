@@ -20,19 +20,6 @@ Resources:
           Name: AWS::Include
           Parameters:
             Location: src/main/resources/api.yaml
-  GetMessageFunction:
-    Type: AWS::Serverless::Function
-    Properties:
-      Handler: index.handler
-      Runtime: python3.7
-      CodeUri: ./lambda
-      Events:
-        GetResource:
-          Type: Api
-          Properties:
-            Path: /v1/message
-            Method: get
-            RestApiId: !Ref GrouchApiGateway
 
   ConfigLambdaPermission:
     Type: "AWS::Lambda::Permission"
@@ -40,6 +27,14 @@ Resources:
       Action: lambda:InvokeFunction
       FunctionName:
         Fn::ImportValue: grouch-auth-function-AuthFunction
+      Principal: apigateway.amazonaws.com
+
+  GrouchMessageLambdaPermission:
+    Type: "AWS::Lambda::Permission"
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName:
+        Fn::ImportValue: grouch-message-function-GrouchMessageFunction
       Principal: apigateway.amazonaws.com
 
   AuthRole:
@@ -142,4 +137,9 @@ Outputs:
     Value: !Join ['', ['https://', !GetAtt [SwaggerUiS3Bucket, DomainName]]]
     Description: Name of S3 bucket to hold website content
 
-
+  GrouchApiGateway:
+    Value: !Ref GrouchApiGateway
+    Description: Grouch Api Gateway Reference
+    Export:
+      Name:
+        Fn::Sub: ${AWS::StackName}-GrouchApiGateway

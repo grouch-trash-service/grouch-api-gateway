@@ -14,7 +14,7 @@ The following command can be used to build.
 ## Running locally
 The api can be started locally with sam by running the following command.
 ```bash
-sam local start-api
+sam build -t template-local.yaml && sam local start-api
 ```
 to run swagger-ui locally run the following command
 ```bash
