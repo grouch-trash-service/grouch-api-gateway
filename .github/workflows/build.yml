@@ -41,7 +41,7 @@ jobs:
 
     - name: Run local Cucumber Tests
       run: |
-        sam local start-api &
+        sam build -t template-local.yaml && sam local start-api &
         sam_pid=$!
         ./mvnw -P cucumber verify
         kill $sam_pid
