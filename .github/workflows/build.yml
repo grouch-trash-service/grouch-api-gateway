@@ -17,7 +17,6 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.11
-/
 
     - name: Setup NodeJs 8
       uses: actions/setup-node@v1
