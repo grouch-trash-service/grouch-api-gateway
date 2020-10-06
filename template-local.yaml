@@ -33,3 +33,4 @@ Resources:
             Path: /v1/message
             Method: get
             RestApiId: !Ref GrouchApiGateway
+            Timeout: 120
