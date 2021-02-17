@@ -7,11 +7,6 @@ For full documentation on the api please see the [swagger-ui page.](http://grouc
 ## Build
 The project is build using maven and uses npm and sam.
 
-Before running the build make sure you have the necessary tools installed by running
-```bash
-./init
-```
-
 The following command can be used to build.
 ```bash
 ./mvnw package
